@@ -11,12 +11,25 @@
     }
 
     RemoteDataStore.prototype.add = function (key, val) {
+        var collection = firebase.firestore().collection('orders');
+        collection.add(val);
         $.post(this.serverUrl, val, function (serverResponse) {
             console.log(serverResponse);
         });
     };
 
     RemoteDataStore.prototype.getAll = function (cb) {
+        db.collection("orders")
+        .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+            });
+        })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
         $.get(this.serverUrl, function (serverResponse) {
             console.log(serverResponse);
             cb(serverResponse);
@@ -30,10 +43,15 @@
     };
 
     RemoteDataStore.prototype.get = function (key, cb) {
+
         $.get(this.serverUrl + '/' + key, function (serverResponse) {
             console.log(serverResponse);
             cb(serverResponse);
         });
+    };
+
+    RemoteDataStore.prototype.get = function (key) {
+        return firebase.firestore().collection('orders').doc(key).get();
     };
 
     App.RemoteDataStore = RemoteDataStore;
