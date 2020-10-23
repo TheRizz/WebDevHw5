@@ -1,0 +1,24 @@
+{
+  "name": "webdevhw4",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^7.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheRizz/WebDevHw4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheRizz/WebDevHw4/issues"
+  },
+  "homepage": "https://github.com/TheRizz/WebDevHw4#readme",
+  "keywords": [],
+  "description": ""
+}
